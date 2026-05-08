@@ -66,15 +66,15 @@ def run_download(job_id, url, quality):
     }
 
     if quality == "best":
-        ydl_opts["format"] = "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"
-    elif quality == "1080":
-        ydl_opts["format"] = "bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[height<=1080][ext=mp4]/best[height<=1080]"
-    elif quality == "720":
-        ydl_opts["format"] = "bestvideo[height<=720][ext=mp4]+bestaudio[ext=m4a]/best[height<=720][ext=mp4]/best[height<=720]"
-    elif quality == "480":
-        ydl_opts["format"] = "bestvideo[height<=480][ext=mp4]+bestaudio[ext=m4a]/best[height<=480][ext=mp4]/best[height<=480]"
-    else:
-        ydl_opts["format"] = "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"
+    ydl_opts["format"] = "bestvideo+bestaudio/best"
+elif quality == "1080":
+    ydl_opts["format"] = "bestvideo[height<=1080]+bestaudio/bestvideo[height<=1080]/best[height<=1080]/best"
+elif quality == "720":
+    ydl_opts["format"] = "bestvideo[height<=720]+bestaudio/bestvideo[height<=720]/best[height<=720]/best"
+elif quality == "480":
+    ydl_opts["format"] = "bestvideo[height<=480]+bestaudio/bestvideo[height<=480]/best[height<=480]/best"
+else:
+    ydl_opts["format"] = "bestvideo+bestaudio/best"
 
     # Ensure MP4 output via ffmpeg post-processing
     ydl_opts["merge_output_format"] = "mp4"
