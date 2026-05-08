@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: social-dl
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --workers 2 --timeout 300
+    disk:
+      name: downloads
+      mountPath: /app/downloads
+      sizeGB: 1
