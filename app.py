@@ -60,7 +60,7 @@ def run_download(job_id, url, quality):
         "outtmpl": output_template,
         "progress_hooks": [make_progress_hook(job_id)],
         "noplaylist": True,
-		"cookiefile": "cookies/cookies.txt",
+	"cookiefile": "cookies/cookies.txt",
         "quiet": True,
         "no_warnings": True,
     }
