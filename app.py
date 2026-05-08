@@ -62,6 +62,7 @@ def run_download(job_id, url, quality):
         "noplaylist": True,
         "quiet": True,
         "no_warnings": True,
+	"cookiefile": "cookies/cookies.txt",
     }
 
     if quality == "best":
