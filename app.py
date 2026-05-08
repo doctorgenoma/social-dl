@@ -60,9 +60,9 @@ def run_download(job_id, url, quality):
         "outtmpl": output_template,
         "progress_hooks": [make_progress_hook(job_id)],
         "noplaylist": True,
+		"cookiefile": "cookies/cookies.txt",
         "quiet": True,
         "no_warnings": True,
-	"cookiefile": "cookies/cookies.txt",
     }
 
     if quality == "best":
@@ -129,7 +129,7 @@ def get_info():
     if not url:
         return jsonify({"error": "URL requerida"}), 400
     try:
-        ydl_opts = {"quiet": True, "no_warnings": True, "noplaylist": True}
+        ydl_opts = {"quiet": True, "no_warnings": True, "noplaylist": True, "cookiefile": "cookies/cookies.txt",}
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=False)
         return jsonify({
